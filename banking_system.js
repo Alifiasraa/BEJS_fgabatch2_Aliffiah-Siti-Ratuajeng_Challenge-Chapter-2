@@ -1,3 +1,5 @@
+import ValidationError from "./customError.js";
+
 class BankingSystem {
   constructor() {
     this.balance = 1000000;
@@ -15,11 +17,10 @@ class BankingSystem {
         }, 2000);
         console.log("Loading...");
       } else {
-        throw new SyntaxError("Jumlah saldo tidak valid.");
+        throw new ValidationError("Jumlah saldo tidak valid.");
       }
     } catch (error) {
-      console.error(error.name);
-      console.error(error.message);
+      console.error(`${error.name}: ${error.message}`);
     }
   }
 
@@ -35,14 +36,13 @@ class BankingSystem {
           }, 2000);
           console.log("Loading...");
         } else {
-          throw new SyntaxError("Saldo tidak mencukupi.");
+          throw new ValidationError("Saldo tidak mencukupi.");
         }
       } else {
-        throw new SyntaxError("Jumlah saldo tidak valid.");
+        throw new ValidationError("Jumlah saldo tidak valid.");
       }
     } catch (error) {
-      console.error(error.name);
-      console.error(error.message);
+      console.error(`${error.name}: ${error.message}`);
     }
   }
 }
