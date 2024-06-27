@@ -3,7 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Banking System</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1 id="balance">Saldo saat ini: Rp.0</h1>
+      <div class="btn">
+        <button id="deposit">Tambahkan Saldo</button>
+        <button id="withdraw">Kurangi Saldo</button>
+        <button id="reset">Hapus Saldo</button>
+      </div>
+
+      <div>
+        <h2>Riwayat transaksi</h2>
+        <div class="transaction">
+          <p id="empty">Belum ada transaksi</p>
+          <ul id="riwayat-transaksi"></ul>
+        </div>
+      </div>
+      <div class="copyright">© 2024 - Aliffiah Siti Ratuajeng</div>
+    </div>
+    <script src="banking_system.js"></script>
+  </body>
 </html>
