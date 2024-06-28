@@ -11,6 +11,7 @@ class BankingSystem {
     try {
       if (!isNaN(amount) && amount > 0) {
         console.log(`Saldo sebelum ditambah Rp.${this.balance}`);
+        this.loading(true);
         setTimeout(() => {
           this.balance += amount;
           console.log(`Saldo setelah ditambah Rp.${this.balance}`);
@@ -18,6 +19,7 @@ class BankingSystem {
           this.transaction(
             `Menambahkan <b>Rp.${amount}</b> <br> Jumlah saldo <b>Rp.${this.balance}</b>`
           );
+          this.loading(false);
         }, 2000);
         console.log("Loading...");
       } else {
@@ -34,6 +36,7 @@ class BankingSystem {
       if (!isNaN(amount) && amount > 0) {
         if (amount <= this.balance) {
           console.log(`Saldo sebelum dikurangi Rp.${this.balance}`);
+          this.loading(true);
           setTimeout(() => {
             this.balance -= amount;
             console.log(`Saldo setelah dikurangi Rp.${this.balance}`);
@@ -41,6 +44,7 @@ class BankingSystem {
             this.transaction(
               `Mengurangi <b>Rp.${amount}</b> <br> Jumlah saldo <b>Rp.${this.balance}</b>`
             );
+            this.loading(false);
           }, 2000);
           console.log("Loading...");
         } else {
@@ -70,6 +74,15 @@ class BankingSystem {
 
     if (ul.children.length >= 1) {
       empty.style.display = "none";
+    }
+  }
+
+  loading(show) {
+    const loading = document.getElementById("loading");
+    if (show) {
+      loading.style.display = "block";
+    } else {
+      loading.style.display = "none";
     }
   }
 }
