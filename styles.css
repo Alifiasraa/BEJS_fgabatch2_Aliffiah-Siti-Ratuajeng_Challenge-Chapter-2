@@ -32,6 +32,7 @@ h2 {
 .btn {
   display: flex;
   gap: 13px;
+  justify-content: center;
 }
 
 button {

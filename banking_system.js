@@ -2,18 +2,19 @@ import ValidationError from "./customError.js";
 
 class BankingSystem {
   constructor() {
-    this.balance = 1000000;
+    this.balance = 10000;
   }
 
   // methods
   deposit(amount) {
-    this.amount = parseFloat(amount);
-    console.log(`Saldo sebelum ditambah Rp.${this.balance}`);
+    amount = parseFloat(amount);
     try {
-      if (!isNaN(this.amount) && this.amount > 0) {
-        this.balance += this.amount;
+      if (!isNaN(amount) && amount > 0) {
+        console.log(`Saldo sebelum ditambah Rp.${this.balance}`);
+        this.balance += amount;
         setTimeout(() => {
           console.log(`Saldo setelah ditambah Rp.${this.balance}`);
+          this.currentBalance();
         }, 2000);
         console.log("Loading...");
       } else {
@@ -25,14 +26,15 @@ class BankingSystem {
   }
 
   withdraw(amount) {
-    this.amount = parseFloat(amount);
-    console.log(`Saldo sebelum dikurangi Rp.${this.balance}`);
+    amount = parseFloat(amount);
     try {
       if (!isNaN(amount) && amount > 0) {
         if (amount <= this.balance) {
+          console.log(`Saldo sebelum dikurangi Rp.${this.balance}`);
           this.balance -= amount;
           setTimeout(() => {
             console.log(`Saldo setelah dikurangi Rp.${this.balance}`);
+            this.currentBalance();
           }, 2000);
           console.log("Loading...");
         } else {
@@ -45,9 +47,20 @@ class BankingSystem {
       console.error(`${error.name}: ${error.message}`);
     }
   }
+
+  currentBalance() {
+    document.getElementById(
+      "balance"
+    ).innerText = `Saldo saat ini: Rp.${this.balance}`;
+  }
 }
 
 const account = new BankingSystem();
+
+// display current balance
+document.addEventListener("DOMContentLoaded", () => {
+  account.currentBalance();
+});
 
 // deposit
 document.getElementById("deposit").addEventListener("click", () => {
@@ -59,8 +72,8 @@ document.getElementById("deposit").addEventListener("click", () => {
 
 // withdraw
 document.getElementById("withdraw").addEventListener("click", () => {
-  const addAmount = window.prompt(
+  const subtractAmount = window.prompt(
     "Masukkan jumlah saldo yang ingin dikurangi:"
   );
-  account.withdraw(addAmount);
+  account.withdraw(subtractAmount);
 });
