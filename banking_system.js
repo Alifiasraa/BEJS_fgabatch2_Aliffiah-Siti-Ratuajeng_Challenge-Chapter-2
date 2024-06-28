@@ -24,6 +24,7 @@ class BankingSystem {
       }
     } catch (error) {
       console.error(`${error.name}: ${error.message}`);
+      alert(`${error.name}: ${error.message}`);
     }
   }
 
@@ -49,6 +50,7 @@ class BankingSystem {
       }
     } catch (error) {
       console.error(`${error.name}: ${error.message}`);
+      alert(`${error.name}: ${error.message}`);
     }
   }
 
